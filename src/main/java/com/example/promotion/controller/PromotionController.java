@@ -6,6 +6,7 @@ import com.example.promotion.service.PromotionService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,4 +39,23 @@ public class PromotionController {
         return enviado;
     }
 
+    @GetMapping("/contenidotxt")
+    public List<String> leerContenidoDeTxt() throws IOException {
+        return promocionService.leerContenidoDeTxt();
+    }
+
+    @GetMapping("/contenidoinverso")
+    public List<String> contenidoInverso() throws IOException {
+        return promocionService.estrofasEnOrdenInverso();
+    }
+
+    @GetMapping("/estrofasyrepetida")
+    public String estrofasYPalabraMasRepetida() throws IOException {
+        return  promocionService.estrofasYPalabraMasRepetida();
+    }
+
+    @GetMapping("/reemplazoporyou")
+    public String reemplazoDePalabraMasRepetidaPoryou() throws IOException {
+        return  promocionService.reemplazoDePalabraMasRepetidaPoryou();
+    }
 }
